@@ -1,23 +1,20 @@
 import { useState } from "react";
 import style from './Task.module.css';
 
-export default function Task({task}) {
+export default function Task({task,setTask, index}) {
 
-    const [color, setColor] = useState("#ffffff")
 
     const completeTask = () => {
-        if(color === "#ffffff"){
-            setColor('#2693ff')
-            //Mark task as done
-        } else {
-            // Remove mark as done
-            setColor("#ffffff")
-        }
+        setTask(prevTask => prevTask.map((item, i) =>
+            i === index ?
+                {...item, done: !item.done} : item
+        ))
     }
+    console.log(task.done);
  
     return (<li className={style.task}>
-                <button onClick={completeTask} style={{backgroundColor: color}} className={style.completeBtn}></button>
-                <p className={style.text}>{task}</p>
+                <button onClick={completeTask} style={{backgroundColor: task.done ? '#2693ff' : '#ffffff' }} className={style.completeBtn}></button>
+                <p className={style.text}>{task.name}</p>
                 <button className={style.edit}>edit</button>
                 <button className={style.delete}>delete</button>
 

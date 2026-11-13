@@ -8,7 +8,7 @@ export default function Form({tasks, setTask}){
     const addTask = (e) => {
         e.preventDefault();
         if(input !== ""){
-            setTask(task => [...task, input])
+            setTask(task => [...task, {name: input, done: false}])
         }
         setInput('');
     }

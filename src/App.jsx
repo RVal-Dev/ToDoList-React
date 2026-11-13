@@ -9,7 +9,7 @@ function App() {
   return (
     <main className={style.main}>
     <Form tasks={tasks} setTask={setTask}/>
-    <TaskList  tasks={tasks}/>
+    <TaskList  tasks={tasks} setTask={setTask}/>
     </main>
   )
 }
