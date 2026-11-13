@@ -1,19 +1,16 @@
 import { useState } from 'react'
-import './App.css'
-import Form from './components/form'
+import style from './App.module.css'
+import Form from './components/Form.jsx'
+import TaskList from './components/TaskList.jsx'
 
 function App() {
-  const [task, setTask] = useState([])
-  console.log(task);
+  const [tasks, setTask] = useState([])
 
   return (
-    <>
-    <Form task={task} setTask={setTask}/>
-
-    {task.map((t, index) =>
-      <li key={index}>{t}</li>
-    )}
-    </>
+    <main className={style.main}>
+    <Form tasks={tasks} setTask={setTask}/>
+    <TaskList  tasks={tasks}/>
+    </main>
   )
 }
 
