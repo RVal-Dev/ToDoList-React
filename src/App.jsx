@@ -6,11 +6,15 @@ import TaskList from './components/TaskList.jsx'
 function App() {
   const [tasks, setTask] = useState([])
 
-  return (
+  return (<>    
+    <header className={style.header}>
+      <h1 className={style.title}>To Do list</h1>
+    </header>
     <main className={style.main}>
-    <Form tasks={tasks} setTask={setTask}/>
-    <TaskList  tasks={tasks} setTask={setTask}/>
+      <Form tasks={tasks} setTask={setTask}/>
+      <TaskList  tasks={tasks} setTask={setTask}/>
     </main>
+    </>
   )
 }
 

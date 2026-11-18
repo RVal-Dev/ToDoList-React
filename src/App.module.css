@@ -1,5 +1,18 @@
+.header{
+    display: flex;
+    margin: 20px 0;
+
+}
+.title{
+    margin: auto;
+    color: #404040;
+}
+
 .main{
-    margin: 25px auto;
+    margin: auto;
     max-width:  500px;
     padding: 0 10px;
+    background-color: #404040;
+    border-radius: 17px;
+    padding: 10px;
 }
