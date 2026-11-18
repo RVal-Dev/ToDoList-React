@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import style from './App.module.css'
 import Form from './components/Form.jsx'
 import TaskList from './components/TaskList.jsx'
 
 function App() {
-  const [tasks, setTask] = useState([])
+  const savedTask = localStorage.getItem('tasks');
+  const [tasks, setTask] = useState(savedTask ? JSON.parse(savedTask) :[ ])
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
+
 
   return (<>    
     <header className={style.header}>

@@ -36,8 +36,8 @@ export default function Task({task,setTask, index}) {
     return (<li className={style.task}>
                 <button onClick={completeTask} style={{backgroundColor: task.done ? '#2693ff' : '#ffffff' }} className={style.completeBtn}></button>
                 {isEditing ?  
-                <input className={style.text} type="text" onChange={(e) => setEdited(e.target.value)} value={edited} /> :
-                <p className={style.text}>{task.name}</p>
+                <input className={style.text} style={{backgroundColor: '#ffffff' }} type="text" onChange={(e) => setEdited(e.target.value)} value={edited} /> :
+                <p className={style.text} style={{backgroundColor: task.done ? '#7d7d7d' : '#f0ffff' }} >{task.name}</p>
                 }
                 <button className={style.edit} onClick={handleIsEditing}>{isEditing? 'save': 'edit'}</button>
                 <button className={style.delete} onClick={deleteTask}>delete</button>
