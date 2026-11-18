@@ -8,7 +8,7 @@ export default function Form({tasks, setTask}){
     const addTask = (e) => {
         e.preventDefault();
         if(input !== ""){
-            setTask(task => [...task, {name: input, done: false}])
+            setTask(task => [...task, {name: input, done: false, id: crypto.randomUUID()}])
         }
         setInput('');
     }

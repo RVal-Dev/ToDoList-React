@@ -10,13 +10,19 @@ export default function Task({task,setTask, index}) {
                 {...item, done: !item.done} : item
         ))
     }
-    console.log(task.done);
+    const deleteTask = () => {
+        setTask(prevTasks => prevTasks.filter(item =>
+            item.id != task.id
+
+        ))
+    }
+
  
     return (<li className={style.task}>
                 <button onClick={completeTask} style={{backgroundColor: task.done ? '#2693ff' : '#ffffff' }} className={style.completeBtn}></button>
                 <p className={style.text}>{task.name}</p>
                 <button className={style.edit}>edit</button>
-                <button className={style.delete}>delete</button>
+                <button className={style.delete} onClick={deleteTask}>delete</button>
 
         </li>
     )
