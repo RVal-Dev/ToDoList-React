@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import style from './Task.module.css';
 
 export default function Task({task,setTask, index}) {
 
+    const [isEditing, setIsEditing] = useState(false);
+    const [edited, setEdited] = useState(task.name);
 
     const completeTask = () => {
         setTask(prevTask => prevTask.map((item, i) =>
@@ -17,11 +19,27 @@ export default function Task({task,setTask, index}) {
         ))
     }
 
+    const handleIsEditing =  () => {
+        if(isEditing){
+            setTask(prevTask => prevTask.map(item => 
+                item.id === task.id
+                    ? {...item, name: edited}
+                    : item
+            ))
+        }
+
+        
+            setIsEditing(!isEditing)
+    }
+
  
     return (<li className={style.task}>
                 <button onClick={completeTask} style={{backgroundColor: task.done ? '#2693ff' : '#ffffff' }} className={style.completeBtn}></button>
+                {isEditing ?  
+                <input className={style.text} type="text" onChange={(e) => setEdited(e.target.value)} value={edited} /> :
                 <p className={style.text}>{task.name}</p>
-                <button className={style.edit}>edit</button>
+                }
+                <button className={style.edit} onClick={handleIsEditing}>{isEditing? 'save': 'edit'}</button>
                 <button className={style.delete} onClick={deleteTask}>delete</button>
 
         </li>
